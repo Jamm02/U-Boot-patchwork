@@ -530,6 +530,54 @@ def _RemoveTemplates(parent):
     for node in del_nodes:
         node.Delete()
 
+def propagate_bootph(node, prop):
+    """Propagate bootph-* property to all the parent nodes up the hierarchy
+
+    Args:
+        node (fdt.Node): Node to propagate the property to
+        prop (str): Property to propagate
+
+    Return:
+        True if any change was made, else False
+    """
+    changed = False
+    while node:
+        if prop not in node.props:
+            node.AddEmptyProp(prop, 0)
+            changed = True
+        node = node.parent
+    return changed
+
+def scan_and_prop_bootph(node):
+    """Propagate bootph properties from children to parents
+
+    The bootph schema indicates that bootph nodes in children should be implied
+    in their parents, all the way up the hierarchy. This is expensive to
+    implement in U-Boot before relocation, so this function explicitly
+    propagates these bootph properties upwards.
+
+    This is used to set the bootph-* property in the parent node if a
+    "bootph-*" property is found in any of the parent's subnodes.
+
+    Args:
+        node (fdt.Node): Node to propagate the property to
+        prop (str): Property name to propagate
+
+    Return:
+        True if any change was made, else False
+
+    """
+    bootph_prop = ['bootph-all', 'bootph-some-ram']
+
+    changed = False
+    for prop in bootph_prop:
+        if prop in node.props:
+            changed |= propagate_bootph(node.parent, prop)
+
+    for subnode in node.subnodes:
+        changed |= scan_and_prop_bootph(subnode)
+    return changed
+
 def PrepareImagesAndDtbs(dtb_fname, select_images, update_fdt, use_expanded, indir):
     """Prepare the images to be processed and select the device tree
 
@@ -588,6 +636,9 @@ def PrepareImagesAndDtbs(dtb_fname, select_images, update_fdt, use_expanded, ind
         node = _FindBinmanNode(dtb)
         fname = tools.get_output_filename('u-boot.dtb.tmpl2')
         tools.write_file(fname, dtb.GetContents())
+
+    if scan_and_prop_bootph(dtb.GetRoot()):
+        dtb.Sync(True)
 
     images = _ReadImageDesc(node, use_expanded)
 
