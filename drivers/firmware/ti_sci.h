@@ -19,6 +19,7 @@
 #define TI_SCI_MSG_ENABLE_WDT		0x0000
 #define TI_SCI_MSG_WAKE_RESET		0x0001
 #define TI_SCI_MSG_VERSION		0x0002
+#define TI_SCI_MSG_DM_VERSION		0x000F
 #define TI_SCI_MSG_WAKE_REASON		0x0003
 #define TI_SCI_MSG_GOODBYE		0x0004
 #define TI_SCI_MSG_SYS_RESET		0x0005
@@ -133,6 +134,34 @@ struct ti_sci_msg_resp_version {
 	u16 firmware_revision;
 	u8 abi_major;
 	u8 abi_minor;
+} __packed;
+
+/**
+ * struct ti_sci_msg_dm_resp_version - Response for a message
+ * @hdr:		Generic header
+ * @version:		Version number of the firmware
+ * @sub_version:	Sub-version number of the firmware
+ * @patch_version:	Patch version number of the firmware
+ * @abi_major:		Major version of the ABI that firmware supports
+ * @abi_minor:		Minor version of the ABI that firmware supports
+ * @sci_server_version:	String describing the SCI server version
+ * @rm_pm_hal_version:	String describing the RM PM HAL version
+ *
+ * In general, ABI version changes follow the rule that minor version increments
+ * are backward compatible. Major revision changes in ABI may not be
+ * backward compatible.
+ *
+ * Response to a message with message type TI_SCI_MSG_DM_VERSION
+ */
+struct ti_sci_msg_dm_resp_version {
+	struct ti_sci_msg_hdr hdr;
+	u16	version;
+	u8	sub_version;
+	u8	patch_version;
+	u8	abi_major;
+	u8	abi_minor;
+	char rm_pm_hal_version[12];
+	char sci_server_version[26];
 } __packed;
 
 /**
