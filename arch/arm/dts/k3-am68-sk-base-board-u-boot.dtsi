@@ -125,7 +125,7 @@
 #ifdef CONFIG_TARGET_J721S2_A72_EVM
 
 #define SPL_AM68_SK_DTB "spl/dts/ti/k3-am68-sk-base-board.dtb"
-#define AM68_SK_DTB "u-boot.dtb"
+#define AM68_SK_DTB "u-boot.dtb.out"
 
 &spl_j721s2_evm_dtb {
 	filename = SPL_AM68_SK_DTB;

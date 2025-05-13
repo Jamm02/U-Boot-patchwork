@@ -14,7 +14,7 @@
 };
 
 &main_navss {
-	bootph-all;
+	
 };
 
 &cbass_mcu_wakeup {
@@ -22,31 +22,31 @@
 };
 
 &wkup_conf {
-	bootph-all;
+	
 };
 
 &chipid {
-	bootph-all;
+	
 };
 
 &mcu_navss {
-	bootph-all;
+	
 };
 
 &mcu_ringacc {
-	bootph-all;
+	
 };
 
 &mcu_udmap {
-	bootph-all;
+	
 };
 
 &secure_proxy_main {
-	bootph-all;
+	
 };
 
 &sms {
-	bootph-all;
+	
 };
 
 &main_pmx0 {
@@ -54,51 +54,51 @@
 };
 
 &main_uart8_pins_default {
-	bootph-all;
+	
 };
 
 &main_mmc1_pins_default {
-	bootph-all;
+	
 };
 
 &main_usbss0_pins_default {
-	bootph-all;
+	
 };
 
 &wkup_pmx0 {
-	bootph-all;
+	
 };
 
 &k3_pds {
-	bootph-all;
+	
 };
 
 &k3_clks {
-	bootph-all;
+	
 };
 
 &k3_reset {
-	bootph-all;
+	
 };
 
 &main_uart8 {
-	bootph-all;
+	
 };
 
 &mcu_uart0 {
-	bootph-all;
+	
 };
 
 &wkup_uart0 {
-	bootph-all;
+	
 };
 
 &main_sdhci0 {
-	bootph-all;
+	
 };
 
 &main_sdhci1 {
-	bootph-all;
+	
 };
 
 &ospi0 {
@@ -112,7 +112,7 @@
 };
 
 &usbss0 {
-	bootph-all;
+	
 };
 
 &usb0 {

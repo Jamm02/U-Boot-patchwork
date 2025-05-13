@@ -151,7 +151,7 @@
 #ifdef CONFIG_TARGET_J721E_A72_EVM
 
 #define SPL_J721E_SK_DTB "spl/dts/ti/k3-j721e-sk.dtb"
-#define J721E_SK_DTB "u-boot.dtb"
+#define J721E_SK_DTB "u-boot.dtb.out"
 
 &spl_j721e_dtb {
 	filename = SPL_J721E_SK_DTB;

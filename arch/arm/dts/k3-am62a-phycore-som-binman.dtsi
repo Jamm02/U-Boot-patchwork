@@ -161,7 +161,7 @@
 #ifdef CONFIG_TARGET_PHYCORE_AM62AX_A53
 
 #define SPL_AM62A7_PHYBOARD_LYRA_DTB "spl/dts/ti/k3-am62a7-phyboard-lyra-rdk.dtb"
-#define AM62A7_PHYBOARD_LYRA_DTB "u-boot.dtb"
+#define AM62A7_PHYBOARD_LYRA_DTB "u-boot.dtb.out"
 
 &binman {
 	tifsstub-hs {

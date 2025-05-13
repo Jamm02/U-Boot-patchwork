@@ -145,7 +145,7 @@
 #ifdef CONFIG_TARGET_AM62A7_A53_EVM
 
 #define SPL_AM62A7_SK_DTB "spl/dts/ti/k3-am62a7-sk.dtb"
-#define AM62A7_SK_DTB "u-boot.dtb"
+#define AM62A7_SK_DTB "u-boot.dtb.out"
 
 &binman {
 	tifsstub-hs {

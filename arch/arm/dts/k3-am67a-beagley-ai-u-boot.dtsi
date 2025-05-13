@@ -165,7 +165,7 @@
 #if IS_ENABLED(CONFIG_TARGET_J722S_A53_BEAGLEY_AI)
 
 #define SPL_BEAGLEY_AI_DTB "spl/dts/ti/k3-am67a-beagley-ai.dtb"
-#define BEAGLEY_AI_DTB "u-boot.dtb"
+#define BEAGLEY_AI_DTB "u-boot.dtb.out"
 
 &binman {
 	ti-spl {
@@ -240,7 +240,7 @@
 					};
 
 					beagley_ai_dtb: blob-ext {
-						filename = "u-boot.dtb";
+						filename = "u-boot.dtb.out";
 					};
 
 					hash {
